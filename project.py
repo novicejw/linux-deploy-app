@@ -21,7 +21,7 @@ APPLICATION_NAME = "Item Catalog App"
 
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:///itemcatalog.db')
+engine = create_engine('postgresql://catalog:catalog@34.201.30.170/catalog')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -349,8 +349,8 @@ def disconnect():
         flash("You were not logged in")
         return redirect(url_for('showCategories'))
 
-
-if __name__ == '__main__':
-    app.secret_key = 'super_secret_key'
-    app.debug = True
-    app.run(host='0.0.0.0', port=8000)
+#    Removed app.run to prevent Flask launching built-in web server
+# if __name__ == '__main__':
+#    app.secret_key = 'super_secret_key'
+#    app.debug = True
+#    app.run(host='0.0.0.0', port=8000)
